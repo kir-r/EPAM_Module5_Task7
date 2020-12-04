@@ -32,7 +32,7 @@ public class Bouquet implements Serializable {
 
     @Override
     public String toString() {
-        return "Bouquet! " + "Price: " + price + "\n" +
+        return "Price: " + price + "\n" +
                 "flowers=" + flowers;
     }
 }

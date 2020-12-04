@@ -55,8 +55,10 @@ public class Task5 {
 
         Connector connector = new Connector();
         try {
-            connector.writeObject(bouquet);  //сериализация;
-            connector.writeObject(gypsophila);
+            System.out.println("Enter the path to serialize an object: ");
+            connector.writeObject(bouquet, reader.readLine());  //сериализация;
+            System.out.println("Enter the path to serialize a second object: ");
+            connector.writeObject(gypsophila, reader.readLine());
         } catch (Exception e) {
             e.printStackTrace();
         }

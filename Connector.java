@@ -1,13 +1,13 @@
 import java.io.*;
-import java.nio.file.Path;
 
 public class Connector {
     Object deserialObject;
-    public void writeObject(Object object) throws FileNotFoundException {
+
+    public void writeObject(Object object, String path) throws FileNotFoundException {
         String fileName = object.getClass().getSimpleName();
         System.out.println("Serialization of object " + fileName);
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\acer\\Desktop\\" + fileName + ".out");
+            FileOutputStream fileOutputStream = new FileOutputStream(path + fileName + ".out");
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(object);
             System.out.println("Serialization finished");
@@ -16,11 +16,7 @@ public class Connector {
         }
     }
 
-    public void readObject(String path) throws FileNotFoundException {
-        //String fileName = object.getClass().getSimpleName();
-        //Object deserialObject;
-        //System.out.println("Deserialization of object " + fileName);
-
+    public Object readObject(String path) throws FileNotFoundException {
         System.out.println("Deserialization of object by path " + path);
         try {
             FileInputStream fileInputStream = new FileInputStream(path);
@@ -30,5 +26,6 @@ public class Connector {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return deserialObject;
     }
 }
